@@ -29,8 +29,6 @@ To init test and coverage test:
 
 >**npm run test**
 
-And:
-
 >**npm run coverage**
 
 Then check the test results and the test coverage table in the console
