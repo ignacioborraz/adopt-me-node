@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/apidoc
+/coverage
 /.pnp
 .pnp.js
 .env

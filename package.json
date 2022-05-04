@@ -7,7 +7,7 @@
     "start": "node ./index.js",
     "dev": "nodemon ./index.js",
     "test": "jest --forceExit",
-    "coverage": "jest --detectOpenHandles --coverage",
+    "coverage": "jest --forceExit --coverage",
     "apidoc": "npx apidoc -i ./routes -e node_modules -o ./apidoc"
   },
   "keywords": [],
