@@ -11,7 +11,7 @@ Service tests were performed with POSTMAN
 
 Endpoints were documented with APIDOC
 
-
+---
 ## Getting started
 To run Swagger Pet Store REST API, install node modules:
 
