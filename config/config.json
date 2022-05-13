@@ -1,23 +1,32 @@
 {
   "development": {
-    "username": "root",
-    "password": "1234",
+    "username": "admin",
+    "password": "Hola1234",
     "database": "pets",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "swagger-pets.cxljsz2vrjvw.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    }
   },
   "test": {
-    "username": "root",
-    "password": "1234",
+    "username": "admin",
+    "password": "Hola1234",
     "database": "pets",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "swagger-pets.cxljsz2vrjvw.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    }
   },
   "production": {
-    "username": "root",
-    "password": "1234",
+    "username": "admin",
+    "password": "Hola1234",
     "database": "pets",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "swagger-pets.cxljsz2vrjvw.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    }
   }
 }
