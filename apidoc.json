@@ -4,5 +4,5 @@
     "version": "1.0.0",
     "license": "MIT",
     "url": "http://petstore.swagger.io/v1",
-    "order": ["listPets","createPets","showPetById"]
+    "order": ["createPets","listPets","showPetById","updatePetById","deletePetById"]
 }
