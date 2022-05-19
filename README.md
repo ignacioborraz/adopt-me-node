@@ -1,9 +1,9 @@
 # SWAGGER PET STORE
 Backend app developed with nodeJS and express
 
-The application connects to a MySQL database through the SEQUELIZE framework (ORM)
+The application connects to a AWS database through the SEQUELIZE framework (ORM).
 
-MVC development pattern views were generated with PUG
+Views of MVC were generated with PUG
 
 Unit and coverage tests were run with JEST and SUPERTEST
 
