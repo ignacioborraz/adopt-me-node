@@ -5,6 +5,7 @@ import errors from "../config/errors.js";
 export default async (req, res, next) => {
   try {
     const cookie = req.cookies["token"];
+    console.log(cookie);
     if (cookie) {
       const user = jwt.verify(cookie, process.env.JWT);
       if (user) {

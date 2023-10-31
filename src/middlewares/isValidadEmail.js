@@ -4,7 +4,10 @@ import errors from "../config/errors.js";
 
 export default async (req, res, next) => {
   try {
-    const exists = await new UsersService().getUserByEmail(req.body.email,next);
+    const exists = await new UsersService().getUserByEmail(
+      req.body.email,
+      next
+    );
     if (exists) {
       CustomError.newError(errors.auth);
     } else {
