@@ -14,8 +14,7 @@ export default class UsersMongo {
   };
   getAll = async (params, next) => {
     try {
-      let response = await User.find(params, "-password");
-      return response;
+      return await User.find(params, "-password");
     } catch (error) {
       error.where = "persistence";
       return next(error);
@@ -23,8 +22,7 @@ export default class UsersMongo {
   };
   getBy = async (params, next) => {
     try {
-      let response = await User.findOne(params);
-      return response;
+      return await User.findOne(params);
     } catch (error) {
       error.where = "persistence";
       return next(error);
@@ -32,8 +30,7 @@ export default class UsersMongo {
   };
   update = async (id, data, next) => {
     try {
-      let response = await User.findByIdAndUpdate(id, { $set: data });
-      return response;
+      return await User.findByIdAndUpdate(id, { $set: data });
     } catch (error) {
       error.where = "persistence";
       return next(error);
@@ -41,8 +38,7 @@ export default class UsersMongo {
   };
   delete = async (id, next) => {
     try {
-      let response = await User.findByIdAndDelete(id);
-      return response;
+      return await User.findByIdAndDelete(id);
     } catch (error) {
       error.where = "persistence";
       return next(error);

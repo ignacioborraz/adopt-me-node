@@ -6,8 +6,7 @@ export default class UsersService {
   }
   create = async (data, next) => {
     try {
-      let response = await this.repository.create(data, next);
-      return response;
+      return await this.repository.create(data, next);
     } catch (error) {
       error.where = "service";
       return next(error);
@@ -15,8 +14,7 @@ export default class UsersService {
   };
   getAll = async (params, next) => {
     try {
-      let response = await this.repository.getAll(params, next);
-      return response;
+      return await this.repository.getAll(params, next);
     } catch (error) {
       error.where = "service";
       return next(error);
@@ -24,8 +22,7 @@ export default class UsersService {
   };
   getBy = async (params, next) => {
     try {
-      let response = await this.repository.getBy(params, next);
-      return response;
+      return await this.repository.getBy(params, next);
     } catch (error) {
       error.where = "service";
       return next(error);
@@ -33,8 +30,7 @@ export default class UsersService {
   };
   getUserByEmail = async (email, next) => {
     try {
-      let response = await this.repository.getUserByEmail(email, next);
-      return response;
+      return await this.repository.getUserByEmail(email, next);
     } catch (error) {
       error.where = "service";
       return next(error);
@@ -42,8 +38,7 @@ export default class UsersService {
   };
   getUserById = async (id, next) => {
     try {
-      let response = await this.repository.getUserById(id, next);
-      return response;
+      return await this.repository.getUserById(id, next);
     } catch (error) {
       error.where = "service";
       return next(error);
@@ -51,8 +46,7 @@ export default class UsersService {
   };
   update = async (id, data, next) => {
     try {
-      let response = await this.repository.update(id, data, next);
-      return response;
+      return await this.repository.update(id, data, next);
     } catch (error) {
       error.where = "service";
       return next(error);
@@ -60,8 +54,7 @@ export default class UsersService {
   };
   delete = async (id, next) => {
     try {
-      let response = await this.repository.delete(id, next);
-      return response;
+      return await this.repository.delete(id, next);
     } catch (error) {
       error.where = "service";
       return next(error);

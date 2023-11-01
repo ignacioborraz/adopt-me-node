@@ -7,7 +7,7 @@ export default async (req, res, next) => {
   try {
     const { uid, pid } = req.params;
     const user = await new UsersService().getUserById(uid, next);
-    const pet = await new PetsService().getBy({ _id: pid }, next);
+    const pet = await new PetsService().getBy(pid, next);
     if (!user || !pet) {
       CustomError.newError(errors.invalid);
     } else {

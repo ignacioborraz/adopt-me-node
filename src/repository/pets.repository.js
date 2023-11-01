@@ -5,9 +5,45 @@ export default class PetsRepository {
   constructor() {
     this.model = new dao.Pet();
   }
-  create = async (data, next) => {};
-  getAll = async (params, next) => {};
-  getBy = async (params, next) => {};
-  update = async (id, data, next) => {};
-  delete = async (id, next) => {};
+  create = async (data, next) => {
+    try {
+      data = PetDTO.getPetInputFrom(data);
+      return this.model.create(data, next);
+    } catch (error) {
+      error.where = "repository";
+      return next(error);
+    }
+  };
+  getAll = async (next) => {
+    try {
+      return this.model.getAll(next);
+    } catch (error) {
+      error.where = "repository";
+      return next(error);
+    }
+  };
+  getBy = async (id, next) => {
+    try {
+      return this.model.getBy(id, next);
+    } catch (error) {
+      error.where = "repository";
+      return next(error);
+    }
+  };
+  update = async (id, data, next) => {
+    try {
+      return this.model.update(id, data, next);
+    } catch (error) {
+      error.where = "repository";
+      return next(error);
+    }
+  };
+  delete = async (id, next) => {
+    try {
+      return this.model.delete(id, next);
+    } catch (error) {
+      error.where = "repository";
+      return next(error);
+    }
+  };
 }

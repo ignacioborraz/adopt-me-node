@@ -8,8 +8,7 @@ export default class UsersRepository {
   create = async (data, next) => {
     try {
       data = await UserDTO.getUserInputFrom(data);
-      let response = await this.model.create(data, next);
-      return response;
+      return await this.model.create(data, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
@@ -17,8 +16,7 @@ export default class UsersRepository {
   };
   getAll = async (params, next) => {
     try {
-      let response = await this.model.getAll(params, next);
-      return response;
+      return await this.model.getAll(params, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
@@ -26,8 +24,7 @@ export default class UsersRepository {
   };
   getBy = async (params, next) => {
     try {
-      let response = await this.model.getBy(params, next);
-      return response;
+      return await this.model.getBy(params, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
@@ -35,8 +32,7 @@ export default class UsersRepository {
   };
   getUserByEmail = async (email, next) => {
     try {
-      let response = await this.model.getBy({ email }, next);
-      return response;
+      return await this.model.getBy({ email }, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
@@ -44,8 +40,7 @@ export default class UsersRepository {
   };
   getUserById = async (id, next) => {
     try {
-      let response = await this.model.getBy({ _id: id }, next);
-      return response;
+      return await this.model.getBy({ _id: id }, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
@@ -53,8 +48,7 @@ export default class UsersRepository {
   };
   update = async (id, data, next) => {
     try {
-      let response = await this.model.update(id, data, next);
-      return response;
+      return await this.model.update(id, data, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
@@ -62,8 +56,7 @@ export default class UsersRepository {
   };
   delete = async (id, next) => {
     try {
-      let response = await this.model.delete(id, next);
-      return response;
+      return await this.model.delete(id, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
