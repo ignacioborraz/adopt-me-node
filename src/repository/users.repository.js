@@ -14,9 +14,9 @@ export default class UsersRepository {
       return next(error);
     }
   };
-  getAll = async (params, next) => {
+  getAll = async (next) => {
     try {
-      return await this.model.getAll(params, next);
+      return await this.model.getAll(next);
     } catch (error) {
       error.where = "repository";
       return next(error);

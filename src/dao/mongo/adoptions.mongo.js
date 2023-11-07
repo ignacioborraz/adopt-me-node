@@ -9,9 +9,13 @@ export default class AdoptionsMongo {
       return next(error);
     }
   };
-  getAll = async (next) => {
+  getAll = async (skip, limit, next) => {
     try {
-      return await Adoption.find().populate("owner").populate("pet");
+      return await Adoption.find()
+        .skip(skip)
+        .limit(limit)
+        .populate("owner")
+        .populate("pet");
     } catch (error) {
       error.where = "mongo";
       return next(error);

@@ -12,9 +12,9 @@ export default class UsersService {
       return next(error);
     }
   };
-  getAll = async (params, next) => {
+  getAll = async (next) => {
     try {
-      return await this.repository.getAll(params, next);
+      return await this.repository.getAll(next);
     } catch (error) {
       error.where = "service";
       return next(error);

@@ -12,9 +12,9 @@ export default class AdoptionsService {
       return next(error);
     }
   };
-  getAll = async (next) => {
+  getAll = async (skip, limit, next) => {
     try {
-      return await this.repository.getAll(next);
+      return await this.repository.getAll(skip, limit, next);
     } catch (error) {
       error.where = "service";
       return next(error);

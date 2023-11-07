@@ -14,9 +14,9 @@ export default class PetsRepository {
       return next(error);
     }
   };
-  getAll = async (next) => {
+  getAll = async (skip, limit, next) => {
     try {
-      return this.model.getAll(next);
+      return this.model.getAll(skip, limit, next);
     } catch (error) {
       error.where = "repository";
       return next(error);

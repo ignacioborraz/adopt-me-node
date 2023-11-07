@@ -14,6 +14,7 @@ export default async (req, res, next) => {
     }
     CustomError.newError(errors.auth);
   } catch (error) {
+    error.where = "middleware";
     return next(error);
   }
 };

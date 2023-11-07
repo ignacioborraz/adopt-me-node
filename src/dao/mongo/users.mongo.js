@@ -12,9 +12,9 @@ export default class UsersMongo {
       return next(error);
     }
   };
-  getAll = async (params, next) => {
+  getAll = async (next) => {
     try {
-      return await User.find(params, "-password");
+      return await User.find({}, "-password");
     } catch (error) {
       error.where = "persistence";
       return next(error);

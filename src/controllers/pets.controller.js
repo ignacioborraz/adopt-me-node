@@ -29,7 +29,15 @@ const createPetWithImage = async (req, res, next) => {
 
 const getAllPets = async (req, res, next) => {
   try {
-    let result = await new PetsService().getAll(next);
+    let queries = {
+      page: 1,
+      limit: 5,
+    };
+    req.query.page && (queries.page = req.query.page);
+    req.query.limit && (queries.limit = req.query.limit);
+    let skip = (queries.page - 1) * queries.limit;
+    let limit = Number(queries.limit);
+    let result = await new PetsService().getAll(skip, limit, next);
     if (result.length > 0) {
       return res.status(200).json({ status: "success", payload: result });
     }

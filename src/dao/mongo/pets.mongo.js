@@ -9,9 +9,9 @@ export default class PetsMongo {
       return next(error);
     }
   };
-  getAll = async (next) => {
+  getAll = async (skip, limit, next) => {
     try {
-      return await Pet.find();
+      return await Pet.find().skip(skip).limit(limit);
     } catch (error) {
       error.where = "mongo";
       return next(error);

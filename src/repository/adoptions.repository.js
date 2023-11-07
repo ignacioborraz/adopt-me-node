@@ -12,9 +12,9 @@ export default class AdoptionsRepository {
       return next(error);
     }
   };
-  getAll = async (next) => {
+  getAll = async (skip, limit, next) => {
     try {
-      return await this.model.getAll(next);
+      return await this.model.getAll(skip, limit, next);
     } catch (error) {
       error.where = "repository";
       return next(error);
