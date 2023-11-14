@@ -7,6 +7,7 @@ export default class UserDTO {
       last_name: user.last_name,
       email: user.email,
       password: await createHash(user.password),
+      role: user.role || "user",
     };
   };
 }
