@@ -22,4 +22,5 @@ switch (persistence) {
     break;
 }
 
+//export { Pet, Adoption, User }
 export default dao;

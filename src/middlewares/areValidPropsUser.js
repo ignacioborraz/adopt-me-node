@@ -4,6 +4,7 @@ import errors from "../config/errors.js";
 export default async (req, res, next) => {
   try {
     const { first_name, last_name, email, password } = req.body;
+    console.log(req.body);
     if (!first_name || !last_name || !email || !password) {
       CustomError.newError(errors.incomplete);
     } else {
