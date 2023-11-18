@@ -12,6 +12,7 @@ import options from "./config/swagger.js";
 
 import errorHandler from "./middlewares/errorHandler.js"
 import notFoundHandler from "./middlewares/notFoundHandler.js"
+import __dirname from "../utils.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true}))
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'))
+app.use('/', express.static(__dirname + '/public'))
 app.use("/api/docs", serve, setup(specs))
 
 app.use("/api",router)

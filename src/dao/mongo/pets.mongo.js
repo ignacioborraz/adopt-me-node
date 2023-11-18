@@ -9,9 +9,17 @@ export default class PetsMongo {
       return next(error);
     }
   };
-  getAll = async (skip, limit, next) => {
+  getAll = async ({ page, skip, limit, adopted }, next) => {
     try {
-      return await Pet.find().skip(skip).limit(limit);
+      let pages = await Pet.countDocuments({ adopted: false });
+      pages = Math.ceil(pages / limit);
+      let prev = Number(page) === 1 ? null : Number(page) - 1;
+      let next = Number(page) === pages ? null : Number(page) + 1;
+      let pets = await Pet.find({ adopted })
+        .skip(skip)
+        .limit(limit)
+        .sort({ name: 1 });
+      return { prev, next, pets };
     } catch (error) {
       error.where = "mongo";
       return next(error);

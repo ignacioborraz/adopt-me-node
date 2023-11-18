@@ -4,8 +4,16 @@ import errors from "../config/errors.js";
 
 const getAllUsers = async (req, res, next) => {
   try {
-    let result = await new UsersService().getAll(next);
-    if (result.length > 0) {
+    let queries = {
+      page: 1,
+      limit: 4,
+      skip: 0,
+    };
+    req.query.page && (queries.page = req.query.page);
+    req.query.limit && (queries.limit = Number(req.query.limit));
+    queries.skip = (queries.page - 1) * queries.limit;
+    let result = await new UsersService().getAll(queries, next);
+    if (result.users.length > 0) {
       return res.status(200).json({ status: "success", payload: result });
     }
     return CustomError.newError(errors.notFound);

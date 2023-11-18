@@ -21,14 +21,14 @@ const getAllAdoptions = async (req, res, next) => {
   try {
     let queries = {
       page: 1,
-      limit: 5,
+      limit: 4,
+      skip: 0,
     };
     req.query.page && (queries.page = req.query.page);
-    req.query.limit && (queries.limit = req.query.limit);
-    let skip = (queries.page - 1) * queries.limit;
-    let limit = Number(queries.limit);
-    let response = await new AdoptionsService().getAll(skip, limit, next);
-    if (response.length > 0) {
+    req.query.limit && (queries.limit = Number(req.query.limit));
+    queries.skip = (queries.page - 1) * queries.limit;
+    let response = await new AdoptionsService().getAll(queries, next);
+    if (response.adoptions.length > 0) {
       return res.status(200).json({ status: "success", payload: response });
     }
     return CustomError.newError(errors.notFound);

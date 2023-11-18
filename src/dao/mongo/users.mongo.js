@@ -12,9 +12,17 @@ export default class UsersMongo {
       return next(error);
     }
   };
-  getAll = async (next) => {
+  getAll = async ({ page, skip, limit }, next) => {
     try {
-      return await User.find({}, "-password");
+      let pages = await User.countDocuments();
+      pages = Math.ceil(pages / limit);
+      let prev = Number(page) === 1 ? null : Number(page) - 1;
+      let next = Number(page) === pages ? null : Number(page) + 1;
+      let users = await User.find({}, "-password")
+        .skip(skip)
+        .limit(limit)
+        .sort({ first_name: 1 });
+      return { prev, next, users };
     } catch (error) {
       error.where = "persistence";
       return next(error);

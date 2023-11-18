@@ -3,6 +3,7 @@ import {
   createPet,
   createPetWithImage,
   getAllPets,
+  getOne,
   updatePet,
   deletePet,
 } from "../controllers/pets.controller.js";
@@ -21,6 +22,7 @@ router.post(
   createPetWithImage
 );
 router.get("/", getAllPets);
+router.get("/:pid", getOne);
 router.put("/:pid", isAdmin, updatePet);
 router.delete("/:pid", isAdmin, deletePet);
 

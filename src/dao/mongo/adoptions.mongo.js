@@ -9,13 +9,18 @@ export default class AdoptionsMongo {
       return next(error);
     }
   };
-  getAll = async (skip, limit, next) => {
+  getAll = async ({ page, skip, limit }, next) => {
     try {
-      return await Adoption.find()
+      let pages = await Adoption.countDocuments();
+      pages = Math.ceil(pages / limit);
+      let prev = Number(page) === 1 ? null : Number(page) - 1;
+      let next = Number(page) === pages ? null : Number(page) + 1;
+      let adoptions = await Adoption.find()
         .skip(skip)
         .limit(limit)
         .populate("owner")
         .populate("pet");
+      return { prev, next, adoptions };
     } catch (error) {
       error.where = "mongo";
       return next(error);

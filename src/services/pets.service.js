@@ -12,9 +12,9 @@ export default class PetsService {
       return next(error);
     }
   };
-  getAll = async (skip, limit, next) => {
+  getAll = async (queries, next) => {
     try {
-      return await this.repository.getAll(skip, limit, next);
+      return await this.repository.getAll(queries, next);
     } catch (error) {
       error.where = "service";
       return next(error);
