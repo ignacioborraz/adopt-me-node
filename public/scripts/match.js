@@ -1,9 +1,9 @@
-fetch("/api/users")
+fetch("/api/users?limit=1000")
   .then((res) => res.json())
   .then((res) => {
-    //console.log(res.payload);
+    //console.log(res.payload.users);
     const ownerSelect = document.querySelector("#owner");
-    let options = res.payload
+    let options = res.payload.users
       .map(
         (each) =>
           `<option value="${each._id}">${each.first_name.toUpperCase()} ${
@@ -48,10 +48,8 @@ button.addEventListener("click", async () => {
           ".alerts"
         ).innerHTML = `<span class="text-center text-danger w-100">${response.message}</span>`;
       } else {
-        document.querySelector("form").reset();
-        document.querySelector(
-          ".alerts"
-        ).innerHTML = `<span class="text-center text-success w-100">Done!</span>`;
+        alert("Done!")
+        location.reload()
       }
     } else {
       document.querySelector(

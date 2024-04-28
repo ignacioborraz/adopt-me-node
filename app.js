@@ -6,13 +6,13 @@ import morgan from "morgan";
 import swaggerJSDoc from "swagger-jsdoc";
 import { serve,setup } from "swagger-ui-express"
 
-import router from "./routes/index.js"
+import router from "./src/routes/index.js"
 
-import options from "./config/swagger.js";
+import options from "./src/config/swagger.js";
 
-import errorHandler from "./middlewares/errorHandler.js"
-import notFoundHandler from "./middlewares/notFoundHandler.js"
-import __dirname from "../utils.js";
+import errorHandler from "./src/middlewares/errorHandler.js"
+import notFoundHandler from "./src/middlewares/notFoundHandler.js"
+import __dirname from "./utils.js";
 
 const app = express();
 const PORT = process.env.PORT || 8080;

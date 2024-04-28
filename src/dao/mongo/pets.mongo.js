@@ -1,15 +1,15 @@
 import Pet from "./models/pet.model.js";
 
 export default class PetsMongo {
-  create = async (data, next) => {
+  create = async (data) => {
     try {
       return await Pet.create(data);
     } catch (error) {
       error.where = "mongo";
-      return next(error);
+      throw error;
     }
   };
-  getAll = async ({ page, skip, limit, adopted }, next) => {
+  getAll = async ({ page, skip, limit, adopted }) => {
     try {
       let pages = await Pet.countDocuments({ adopted: false });
       pages = Math.ceil(pages / limit);
@@ -22,31 +22,31 @@ export default class PetsMongo {
       return { prev, next, pets };
     } catch (error) {
       error.where = "mongo";
-      return next(error);
+      throw error;
     }
   };
-  getBy = async (id, next) => {
+  getBy = async (id) => {
     try {
       return await Pet.findById(id);
     } catch (error) {
       error.where = "mongo";
-      return next(error);
+      throw error;
     }
   };
-  update = async (id, data, next) => {
+  update = async (id, data) => {
     try {
       return await Pet.findByIdAndUpdate(id, data);
     } catch (error) {
       error.where = "mongo";
-      return next(error);
+      throw error;
     }
   };
-  delete = async (id, next) => {
+  delete = async (id) => {
     try {
       return await Pet.findByIdAndDelete(id);
     } catch (error) {
       error.where = "mongo";
-      return next(error);
+      throw error;
     }
   };
 }

@@ -4,60 +4,60 @@ export default class UsersService {
   constructor() {
     this.repository = new UsersRepository();
   }
-  create = async (data, next) => {
+  create = async (data) => {
     try {
-      return await this.repository.create(data, next);
+      return await this.repository.create(data);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
-  getAll = async (queries, next) => {
+  getAll = async (queries) => {
     try {
-      return await this.repository.getAll(queries, next);
+      return await this.repository.getAll(queries);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
-  getBy = async (params, next) => {
+  getBy = async (params) => {
     try {
-      return await this.repository.getBy(params, next);
+      return await this.repository.getBy(params);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
-  getUserByEmail = async (email, next) => {
+  getUserByEmail = async (email) => {
     try {
-      return await this.repository.getUserByEmail(email, next);
+      return await this.repository.getUserByEmail(email);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
-  getUserById = async (id, next) => {
+  getUserById = async (id) => {
     try {
-      return await this.repository.getUserById(id, next);
+      return await this.repository.getUserById(id);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
-  update = async (id, data, next) => {
+  update = async (id, data) => {
     try {
-      return await this.repository.update(id, data, next);
+      return await this.repository.update(id, data);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
-  delete = async (id, next) => {
+  delete = async (id) => {
     try {
-      return await this.repository.delete(id, next);
+      return await this.repository.delete(id);
     } catch (error) {
       error.where = "service";
-      return next(error);
+      throw error;
     }
   };
 }

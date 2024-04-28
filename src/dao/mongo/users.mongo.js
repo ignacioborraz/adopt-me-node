@@ -2,17 +2,17 @@ import User from "./models/user.model.js";
 import UserResponseDTO from "../../dto/users.response.dto.js";
 
 export default class UsersMongo {
-  create = async (data, next) => {
+  create = async (data) => {
     try {
       let result = await User.create(data);
       result = UserResponseDTO.getUserDbFrom(result);
       return result;
     } catch (error) {
       error.where = "persistence";
-      return next(error);
+      throw error;
     }
   };
-  getAll = async ({ page, skip, limit }, next) => {
+  getAll = async ({ page, skip, limit }) => {
     try {
       let pages = await User.countDocuments();
       pages = Math.ceil(pages / limit);
@@ -25,31 +25,31 @@ export default class UsersMongo {
       return { prev, next, users };
     } catch (error) {
       error.where = "persistence";
-      return next(error);
+      throw error;
     }
   };
-  getBy = async (params, next) => {
+  getBy = async (params) => {
     try {
       return await User.findOne(params);
     } catch (error) {
       error.where = "persistence";
-      return next(error);
+      throw error;
     }
   };
-  update = async (id, data, next) => {
+  update = async (id, data) => {
     try {
       return await User.findByIdAndUpdate(id, { $set: data });
     } catch (error) {
       error.where = "persistence";
-      return next(error);
+      throw error;
     }
   };
-  delete = async (id, next) => {
+  delete = async (id) => {
     try {
       return await User.findByIdAndDelete(id);
     } catch (error) {
       error.where = "persistence";
-      return next(error);
+      throw error;
     }
   };
 }

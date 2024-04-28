@@ -8,7 +8,7 @@ fetch("/api/users?page=" + currentPage)
     //console.log(res);
     //console.log(res.payload.prev);
     //console.log(res.payload.next);
-    const cards = res.payload.users
+    const cards = res.payload?.users
       .map(
         (each) => `
     <article class="card mx-3 mb-3" style="height: 400px; width: 340px">
@@ -25,10 +25,10 @@ fetch("/api/users?page=" + currentPage)
       .join("");
     document.querySelector("section").innerHTML = cards;
     const buttons = `${
-      res.payload.prev &&
+      res.payload?.prev &&
       `<a href="/pages/users.html?page=${res.payload.prev}" style="width: 106px" class="btn btn-warning mx-2 mt-1 mb-3">previous</a>`
     }${
-      res.payload.next &&
+      res.payload?.next &&
       `<a href="/pages/users.html?page=${res.payload.next}" style="width: 106px" class="btn btn-warning mx-2 mt-1 mb-3">next</a>`
     }`;
     document.querySelector("aside").innerHTML = buttons;

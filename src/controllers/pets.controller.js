@@ -31,7 +31,7 @@ const getAllPets = async (req, res, next) => {
   try {
     let queries = {
       page: 1,
-      limit: 4,
+      limit: 6,
       skip: 0,
       adopted: false,
     };

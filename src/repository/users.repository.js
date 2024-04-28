@@ -5,61 +5,61 @@ export default class UsersRepository {
   constructor() {
     this.model = new dao.User();
   }
-  create = async (data, next) => {
+  create = async (data) => {
     try {
       data = await UserDTO.getUserInputFrom(data);
-      return await this.model.create(data, next);
+      return await this.model.create(data);
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
-  getAll = async (queries, next) => {
+  getAll = async (queries) => {
     try {
-      return await this.model.getAll(queries, next);
+      return await this.model.getAll(queries);
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
-  getBy = async (params, next) => {
+  getBy = async (params) => {
     try {
-      return await this.model.getBy(params, next);
+      return await this.model.getBy(params);
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
-  getUserByEmail = async (email, next) => {
+  getUserByEmail = async (email) => {
     try {
-      return await this.model.getBy({ email }, next);
+      return await this.model.getBy({ email });
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
-  getUserById = async (id, next) => {
+  getUserById = async (id) => {
     try {
-      return await this.model.getBy({ _id: id }, next);
+      return await this.model.getBy({ _id: id });
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
-  update = async (id, data, next) => {
+  update = async (id, data) => {
     try {
-      return await this.model.update(id, data, next);
+      return await this.model.update(id, data);
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
-  delete = async (id, next) => {
+  delete = async (id) => {
     try {
-      return await this.model.delete(id, next);
+      return await this.model.delete(id);
     } catch (error) {
       error.where = "repository";
-      return next(error);
+      throw error;
     }
   };
 }
