@@ -11,11 +11,10 @@ fetch("/api/pets?page=" + currentPage)
     const cards = res.payload?.pets
       .map(
         (each) => `
-            <article class="card mx-3 mb-3" style="height: 400px; width: 340px">
-              <img src="${each.image}" style="height: 280px" class="card-img-top object-fit-cover" alt="...">
-              <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                <h5 class="card-title">${each.name} - ${each.specie}</h5>
-                <a href="/pages/pet.html?pid=${each._id}" style="width: 106px" class="btn btn-warning m-0">Adopt!</a>
+            <article class="card mx-3 mb-3 d-flex position-relative" style="height: 280px; width: 340px">
+              <img src="${each.image}" style="height: 100%; width: 100%" class="card-img-top object-fit-cover" alt="...">
+              <div class="position-absolute bottom-0 end-0 d-flex flex-column justify-content-center align-items-center">
+                <a href="/pages/pet.html?pid=${each._id}" style="width: 180px" class="btn btn-warning mb-0">Adopt ${each.name}!</a>
               </div>
             </article>`
       )

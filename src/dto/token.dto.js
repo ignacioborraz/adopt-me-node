@@ -1,10 +1,11 @@
 export default class UserDTO {
   static getUserTokenFrom = (user) => {
+    const { first_name, last_name, role, avatar, email } = user;
     return {
-      name: `${user.first_name} ${user.last_name}`,
-      role: user.role,
-      avatar: user.avatar,
-      email: user.email,
+      full_name: first_name + (last_name ? ` ${last_name}` : ``),
+      role,
+      avatar,
+      email,
     };
   };
 }

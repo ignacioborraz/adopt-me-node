@@ -11,17 +11,17 @@ fetch("/api/adoptions?page=" + currentPage)
     const cards = res.payload?.adoptions
       .map(
         (each) => `
-    <article class="card mx-3 mb-3" style="height: 400px; width: 340px">
+    <article class="card position-relative mx-3 mb-3" style="height: 280px; width: 340px">
       <div class="d-flex justify-content-center align-items-center">
         <img src="${
           each.owner.avatar
-        }" style="height: 340px" class="w-50 card-img-top object-fit-cover" alt="...">
+        }" style="height: 280px" class="w-50 card-img-top object-fit-cover" alt="...">
           <img src="${
             each.pet.image
-          }" style="height: 340px" class="w-50 card-img-top object-fit-cover" alt="...">
+          }" style="height: 280px" class="w-50 card-img-top object-fit-cover" alt="...">
       </div>
-      <div class="card-body d-flex flex-column justify-content-center align-items-center">
-        <h5 class="card-title">${each.owner.first_name.toUpperCase()} & ${each.pet.name.toUpperCase()}</h5>
+      <div class="position-absolute bottom-0 end-0 d-flex flex-column justify-content-center align-items-center">
+        <h5 style="width: 180px" class="btn btn-warning mb-0">${each.owner.first_name.toUpperCase()} & ${each.pet.name.toUpperCase()}</h5>
       </div>
     </article>`
       )

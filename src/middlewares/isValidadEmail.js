@@ -8,7 +8,6 @@ export default async (req, res, next) => {
       req.body.email,
       next
     );
-    console.log(req.body);
     if (exists) {
       CustomError.newError(errors.auth);
     } else {
